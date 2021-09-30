@@ -23,11 +23,11 @@ print("Completed, have a nice day!")
 
 print("Let's test your programming knowledge.")
 print("""
-How many bytes are there in a kilobyte?
-1. 256
-2. 1024
-3. 128
-4. 825
+How many megabytes are there in a gigabytes?
+1. 1001
+2. 1000
+3. 999
+4. 1024
 """)
 
 
