@@ -21,5 +21,22 @@ for i in range(your_num):
     print(i, end="! \n")
 print("Completed, have a nice day!")
 
+print("Let's test your programming knowledge.")
+print("""
+How many bytes are there in a kilobyte?
+1. 256
+2. 1024
+3. 128
+4. 825
+""")
 
+
+def answers(new_answer):
+    answer = int(input())
+    if answer == 2:
+        print("Congratulations, have a nice day!")
+    else:
+        print("Please, try again.")
+        answers("1")
+answers("2")
 
