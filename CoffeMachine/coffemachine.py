@@ -1,83 +1,120 @@
-w = 400
-m = 540
-b = 120
-c = 9
-mon = 550
+class CoffeeMachine:
+    def __init__(self):
+        self.w = 400
+        self.m = 540
+        self.b = 120
+        self.c = 9
+        self.mon = 550
+
+    def fill(self):
+        self.w += int(input("Write how many water do want: > "))
+        self.m += int(input("Write how many milk do want: > "))
+        self.b += int(input("Write how many beans do want: > "))
+        self.c += int(input("Write how many cups do want: > "))
 
 
-def esp():
-    global  w, b, c, mon
-    w -= 250
-    b -= 16
-    c -= 1
-    mon += 4
-    return
+    def esp(self):
+        if self.w < 250:
+            print("Sorry, enough water in coffee machine.")
+        elif self.b < 16:
+            print("Sorry, enough beans in coffee machine.")
+        elif self.c < 1:
+            print("Sorry, enough cups in coffee machine.")
+        else:
+            self.w -= 250
+            self.b -= 16
+            self.c -= 1
+            self.mon += 4
+            print("""Starting make a coffee
+Griding coffee beans
+Boiling water
+Mixing water with crushed beans
+Pouring coffee into cup
+Coffee ready!""")
+
+    def lat(self):
+        if self.w < 350:
+            print("Sorry, enough water in coffee machine.")
+        elif self.m < 75:
+            print("Sorry, enough milk in coffee machine.")
+        elif self.b < 20:
+            print("Sorry, enough beans in coffee machine.")
+        elif self.c < 1:
+            print("Sorry, enough cups in coffee machine.")
+        else:
+            self.w -= 250
+            self.m -= 75
+            self.b -= 16
+            self.c -= 1
+            self.mon += 7
+            print("""Starting make a coffee
+Griding coffee beans
+Boiling water
+Mixing water with crushed beans
+Pouring coffee into cup
+Adding milk into your coffee
+Coffee ready!""")
 
 
-def lat():
-    global  w, m, b, c, mon
-    w -= 350
-    m -= 75
-    b -= 20
-    c -= 1
-    mon += 7
-    return
+    def cap(self):
+        if self.w < 200:
+            print("Sorry, enough water in coffee machine.")
+        elif self.m < 100:
+            print("Sorry, enough milk in coffee machine.")
+        elif self.b < 12:
+            print("Sorry, enough beans in coffee machine.")
+        elif self.c < 1:
+            print("Sorry, enough cups in coffee machine.")
+        else:
+            self.w -= 250
+            self.m -= 75
+            self.b -= 16
+            self.c -= 1
+            self.mon += 6
+            print("""Starting make a coffee
+Griding coffee beans
+Boiling water
+Mixing water with crushed beans
+Pouring coffee into cup
+Adding milk into your coffee
+Coffee ready!""")
 
 
-def cap():
-    global  w, m, b, c, mon
-    w -= 200
-    m -= 100
-    b -= 12
-    c -= 1
-    mon += 6
-    return
+    def take(self):
+        print(f"I gave you {self.mon} uah.")
+        self.mon = self.mon - self.mon
 
 
-def cof_trade():
-    global w, m, b, c, mon
-    print("The coffee machine has\n  " + str(w) + "  of water\n  "+ str(m) + "  of milk\n  " + str(b) + "  of beans\n  " + str(c) + "  of cup\n  ")
-    print(str(mon) + " of money")
+    def remaining(self):
+        print(f"""In coffee machine:
+        {self.w} of water.
+        {self.m} of milk.
+        {self.b} of beans.
+        {self.c} of cups.
+        {self.mon}  of money.""")
 
 
-def buy():
-    a = int(input("What do you wanna buy? 1 - espresso, 2 - latte, 3 - cappuccino: "))
-    if a == 1:
-        esp()
-    if a == 2:
-        lat()
-    if a == 3:
-        cap()
-    else:
-        print("No, i can make only: espresso, latte, capuchino" +"  cups of coffee")
-        print("Please enter correct number.")
-cof_trade()
-
-
-def fill():
-    global w, m, b, c, mon
-    w += int(input("How many water you want?: "))
-    m += int(input("How many milk you want?: "))
-    b += int(input("How many beans you want?: "))
-    c += int(input("How many cups you want?: "))
-cof_trade()
-
-def take():
-    global  mon
-    print("You give me" + str(mon))
-    mon -= mon
-cof_trade()
-
-
+objects = CoffeeMachine()
 while True:
-    cof_trade()
-    print("")
-    answer = input("Write action (buy, fill, take):  ")
-    if answer == "buy":
-        buy()
-    elif answer == "fill":
-        fill()
-    elif answer == "take":
-        take()
-    else:
-        print("Write your answer correctly!")
+    act = str(input("Write action (buy, fill, take, remaining, exit): >  "))
+    if act == "buy":
+        while act != "back":
+            selecting = input("What you wanna buy; 1 - espresso, 2 - latte, 3 - cappuccino.")
+
+            if selecting == "1":
+                objects.esp()
+                break
+            if selecting == "2":
+                objects.lat()
+                break
+            if selecting == "3":
+                objects.cap()
+                break
+    if act == "fill":
+        objects.fill()
+    if act == "take":
+        objects.take()
+    if act == "exit":
+        break
+    if act == "remaining":
+        objects.remaining()
