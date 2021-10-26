@@ -1,8 +1,10 @@
-print("""Starting to make a coffee
-Grinding coffee beans
-Boiling water
-Mixing boiled water with crushed coffee beans
-Pouring coffee into the cup
-Pouring some milk into the cup
-Coffee is ready!"""
-      
+print("How many cups coffee do you want?")
+c = int(input("> "))
+w = 200
+m = 50
+b = 15
+print("For ", c ,"cups of coffee need:")
+print(c * w, "ml watter")
+print(c * m, "ml milk")
+print(c * b, "g of coffee beans")
+
