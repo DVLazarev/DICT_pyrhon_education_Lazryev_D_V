@@ -68,4 +68,14 @@ while turns > 0:
          if turns == 0:
              print ('\n\nThe answer is', secret)
 
+print("HANGMAN")
 
+while True:
+    print('Type "play" to play the game, "exit" to quit: ', end='')
+    answer = input()
+    if answer == 'play':
+        print('')
+        print(len(secret) * '_', end='')
+        playing()
+    elif answer == 'exit':
+                break
