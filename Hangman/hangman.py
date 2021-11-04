@@ -1,6 +1,9 @@
-print('''HANGMAN - The game will be able soon''')
-old_list = ['python', 'java', 'javascript', 'php', 'html']
-
+print("HANGMAN-The game will be available soon.")
+qwe0 = input("Guess the word:")
+if qwe0 == "python":
+    print("You survived!")
+else:
+    print("You lost!")
 
 
 
