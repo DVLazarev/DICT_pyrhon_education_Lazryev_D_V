@@ -26,7 +26,7 @@ while turns > 0:
 
      if guess not in secret:
          turns = turns -1
-         print ('\nNope.')
+         print ('\nThat letter doesnt appear in the word')
          print ('\n',turns, 'more turns')
          if turns < 5: print ('\n  |  ')
          if turns < 4: print ('  O  ')
