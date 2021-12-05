@@ -1,4 +1,4 @@
-def input_m():
+def it_m():
     measurement = input("Введите кол-во строк и столбов: ").split()
     n, m = measurement
     mx = []
@@ -7,9 +7,10 @@ def input_m():
     return mx
 
 
+
 def sum_mat():
-    mtx = input_m()
-    mtx_2 = input_m()
+    mtx = it_m()
+    mtx_2 = it_m()
     if len(mtx) == len(mtx_2) and len(mtx[0]) == len(mtx_2[0]):
         for i in range(len(mtx)):
             for x in range(len(mtx[0])):
@@ -18,14 +19,12 @@ def sum_mat():
     else:
         print("ERROR")
 
-
 def multiplication():
-    mtx = input_m()
+    mtx = it_m()
     const = input("Введите константу: ")
     for i in range(len(mtx)):
         for x in range(len(mtx[0])):
             print(int(mtx[i][x]) * int(const), end=' ')
         print('')
-
 
 multiplication()
