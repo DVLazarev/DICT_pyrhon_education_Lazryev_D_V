@@ -62,13 +62,47 @@ def matrix_two_multiply(m1, m2):
     return c
 
 
+def transpose_main(matrix):
+    c = [[0 for row in range(len(matrix))] for col in range(len(matrix[0]))]
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            c[i][j] = matrix[j][i]
+    return c
+
+def transpose_side(matrix):
+    c = [[0 for row in range(len(matrix))] for col in range(len(matrix[0]))]
+    result = []
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            c[i][j] = matrix[j][i]
+    res1 = c[::-1]
+    for i in range(len(matrix)):
+        a = res1[i][::-1]
+        result.append(a)
+    return result
+
+
+def transpose_vertical(matrix):
+    result = []
+    for i in range(len(matrix)):
+        a = matrix[i][::-1]
+        result.append(a)
+    return result
+
+
+def transpose_horizontal(matrix):
+    result = matrix[::-1]
+    return result
+
+
 
 
 while True:
     a = input("""1. Add matrices
 2. Multiply matrix by a constant
 3. Multiply matrices
-4. Exit 
+4. Transpose matrices
+5. Exit 
 """)
     if a == '1':
         print(Back.CYAN + Fore.BLACK + Style.BRIGHT)
@@ -105,6 +139,45 @@ while True:
         print('The result is:')
         matrix_print(matrix_result, m1row, m2col)
     elif a == '4':
+        print(Back.RED + Fore.BLACK + Style.BRIGHT)
+        print('''
+    1. Main diagonal
+    2. Side diagonal
+    3. Vertical line
+    4. Horizontal line''')
+        transpose_choice = int(input('Your choice:'))
+        if transpose_choice == 1:
+            m1row, m1col = map(int, input('Enter matrix size:').split())
+            print('Enter matrix:')
+            matrix1 = matrix_input(m1row)
+            result = transpose_main(matrix1)
+            print('The result is:')
+            matrix_print(result, m1row, m1col)
+
+        elif transpose_choice == 2:
+            m1row, m1col = map(int, input('Enter matrix size:').split())
+            print('Enter matrix:')
+            matrix1 = matrix_input(m1row)
+            result = transpose_side(matrix1)
+            print('The result is:')
+            matrix_print(result, m1row, m1col)
+
+        elif transpose_choice == 3:
+            m1row, m1col = map(int, input('Enter matrix size:').split())
+            print('Enter matrix:')
+            matrix1 = matrix_input(m1row)
+            result = transpose_vertical(matrix1)
+            print('The result is:')
+            matrix_print(result, m1row, m1col)
+
+        elif transpose_choice == 4:
+            m1row, m1col = map(int, input('Enter matrix size:').split())
+            print('Enter matrix:')
+            matrix1 = matrix_input(m1row)
+            result = transpose_horizontal(matrix1)
+            print('The result is:')
+            matrix_print(result, m1row, m1col)
+    elif a == '5':
         print(Style.RESET_ALL)
 
         break
