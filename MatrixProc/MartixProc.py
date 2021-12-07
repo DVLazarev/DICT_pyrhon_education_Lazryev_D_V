@@ -94,7 +94,47 @@ def transpose_horizontal(matrix):
     result = matrix[::-1]
     return result
 
+def determinant(matrix, mul):
+    width = len(matrix)
+    if width == 1:
+        return mul * matrix[0][0]
+    else:
+        swap = -1
+        sum = 0
+        for i in range(width):
+            m = []
+            for j in range(1, width):
+                temp = []
+                for k in range(width):
+                    if k != i:
+                        temp.append(matrix[j][k])
+                m.append(temp)
+            swap *= -1
+            sum += mul * determinant(m, swap * matrix[0][i])
+        return sum
 
+
+def minor(matrix, i, j):
+    return [row[:j] + row[j + 1:] for row in (matrix[:i] + matrix[i + 1:])]
+
+
+def inverse(matrix):
+    determinant1 = determinant(matrix, 1)
+    if len(matrix) == 2:
+        return print("This matrix doesn't have an inverse.")
+
+    cofactors = []
+    for i in range(len(matrix)):
+        cofactorrow = []
+        for j in range(len(matrix)):
+            minor1 = minor(matrix, i, j)
+            cofactorrow.append(((-1) ** (i + j)) * determinant(minor1, 1))
+        cofactors.append(cofactorrow)
+    cofactors = transpose_main(cofactors)
+    for i in range(len(cofactors)):
+        for j in range(len(cofactors)):
+            cofactors[i][j] = cofactors[i][j] / determinant1
+    return cofactors
 
 
 while True:
@@ -102,7 +142,9 @@ while True:
 2. Multiply matrix by a constant
 3. Multiply matrices
 4. Transpose matrices
-5. Exit 
+5. Calculate a determinant
+6. Inverse matrix
+7. Exit 
 """)
     if a == '1':
         print(Back.CYAN + Fore.BLACK + Style.BRIGHT)
@@ -178,6 +220,23 @@ while True:
             print('The result is:')
             matrix_print(result, m1row, m1col)
     elif a == '5':
+        print(Back.WHITE + Fore.BLACK + Style.BRIGHT)
+        m1row, m1col = map(int, input('Enter matrix size:').split())
+        print('Enter matrix:')
+        matrix1 = matrix_input(m1row)
+        result = determinant(matrix1, 1)
+        print('The result is:')
+        print(result)
+
+    elif a == '6':
+        print(Back.MAGENTA + Fore.BLACK + Style.BRIGHT)
+        m1row, m1col = map(int, input('Enter matrix size:').split())
+        print('Enter matrix:')
+        matrix1 = matrix_input(m1row)
+        result = inverse(matrix1)
+        print('The result is:')
+        matrix_print(result, m1row, m1col)
+    elif a == '7':
         print(Style.RESET_ALL)
 
         break
