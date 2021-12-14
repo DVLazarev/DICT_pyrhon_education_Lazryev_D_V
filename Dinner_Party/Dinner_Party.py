@@ -15,8 +15,14 @@ if count >=1:
         ls.append(input())
     peoples = dict_update(dict.fromkeys(ls))
     money = int(input("Enter the total amount: "))
-    res_money = round(money / (count ), 2)
-    peoples = dict_update(peoples, res_money)
-    print(peoples)
+    answer = input('Do you want to use the "Who is lucky?" feature? Write Yes/No:')
+    lucky_check = False
+    if answer == "Yes" or answer == "yes":
+        lucky = random.choice(list(peoples.keys()))
+        print(f"{lucky} is the lucky one!")
+        lucky_check = True
+    else:
+        print("No one is going to be lucky ")
+        print(peoples)
 else:
     print("No one is joining for the party ")
