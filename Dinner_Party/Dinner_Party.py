@@ -14,6 +14,9 @@ if count >=1:
     for i in range(count):
         ls.append(input())
     peoples = dict_update(dict.fromkeys(ls))
+    money = int(input("Enter the total amount: "))
+    res_money = round(money / (count ), 2)
+    peoples = dict_update(peoples, res_money)
     print(peoples)
 else:
     print("No one is joining for the party ")
