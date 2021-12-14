@@ -23,6 +23,12 @@ if count >=1:
         lucky_check = True
     else:
         print("No one is going to be lucky ")
-        print(peoples)
+    if lucky_check == True :
+        res_money = round(money/(count-1),2)
+        peoples = dict_update(peoples,res_money,lucky)
+    else:
+        res_money = round(money / (count ), 2)
+        peoples = dict_update(peoples, res_money)
+    print(peoples)
 else:
     print("No one is joining for the party ")
